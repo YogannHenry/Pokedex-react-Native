@@ -45,6 +45,11 @@ export const StorageService = {
     }
   },
 
+  // Alias pour compatibilité avec le store
+  async getCapturedPokemon() {
+    return this.getCollection();
+  },
+
   // Check if a Pokémon is in the collection
   async isPokemonCaptured(pokemonId) {
     try {

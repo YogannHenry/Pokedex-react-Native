@@ -25,6 +25,11 @@ export const PokeAPI = {
     }
   },
 
+  // Alias pour compatibilité (utilisé dans le store)
+  async getPokemonDetails(nameOrId) {
+    return this.getPokemonDetail(nameOrId);
+  },
+
   // Get Pokémon species information (for flavor text, etc.)
   async getPokemonSpecies(id) {
     try {

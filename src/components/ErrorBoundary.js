@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { globalStyles, colors } from '../styles/globalStyles';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -21,16 +19,16 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <View style={styles.container}>
-          <Ionicons name="warning" size={64} color={colors.warning} />
-          <Text style={styles.title}>Oops! Something went wrong</Text>
+          <Text style={styles.icon}>⚠️</Text>
+          <Text style={styles.title}>Oups ! Une erreur est survenue</Text>
           <Text style={styles.message}>
-            The app encountered an unexpected error. Please try restarting the app.
+            L'application a rencontré une erreur inattendue. Veuillez essayer de redémarrer l'app.
           </Text>
           <TouchableOpacity 
             style={styles.retryButton}
             onPress={() => this.setState({ hasError: false, error: null })}
           >
-            <Text style={styles.retryButtonText}>Try Again</Text>
+            <Text style={styles.retryButtonText}>Réessayer</Text>
           </TouchableOpacity>
         </View>
       );
@@ -42,35 +40,45 @@ class ErrorBoundary extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    ...globalStyles.centerContainer,
-    backgroundColor: colors.light,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
     padding: 32,
+  },
+  
+  icon: {
+    fontSize: 64,
+    marginBottom: 24,
   },
   
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.dark,
+    color: '#333',
     textAlign: 'center',
-    marginTop: 24,
     marginBottom: 16,
   },
   
   message: {
     fontSize: 16,
-    color: colors.gray,
+    color: '#666',
     textAlign: 'center',
     lineHeight: 24,
     marginBottom: 32,
   },
   
   retryButton: {
-    ...globalStyles.button,
+    backgroundColor: '#4285f4',
     paddingHorizontal: 32,
+    paddingVertical: 12,
+    borderRadius: 8,
   },
   
   retryButtonText: {
-    ...globalStyles.buttonText,
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
